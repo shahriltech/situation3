@@ -219,7 +219,7 @@
 				<div class="row">
 					<div class="col-sm-4 cf-item">
 						<header>
-							<p id="svpheader-1" class="glyphicon glyphicon-briefcase"> NONE</p>
+							<p id="svpheader-1" class="glyphicon glyphicon-briefcase"> </p>
 						</header>
 						<div class="content cf-svp clearfix" id="svp-1">
 							<div class="chart" data-percent="0" data-layout="l-6-4"></div>
