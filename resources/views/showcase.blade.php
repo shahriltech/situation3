@@ -38,6 +38,11 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+
+    <script src="js/calendar/calendar.js"></script>
+
+	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
+
 	<script src="js/weather.js"></script>
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
     
@@ -269,23 +274,9 @@
 							<p class="glyphicon glyphicon-plane"> PUBLIC HOLIDAY </p>
 						</header>
 						<div class="content">
-                            <br />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 1 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 2 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 3 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 4 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 5 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 6 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 7 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> HOLIDAY 8 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
+                            <div id='content'>
+							    <p id='events'></p>
+							</div>
 						</div>
 					</div> <!-- //end cf-item -->	
 
