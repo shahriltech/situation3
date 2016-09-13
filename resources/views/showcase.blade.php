@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/bootstrap.css">
-    <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/controlfrog.css">  
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ("assets/css/bootstrap.css") }}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ("assets/css/controlfrog.css")}}">  
 	
 	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
 
-	<script src="http://localhost:8000/js/moment.js"></script>
-	<script src="http://localhost:8000/js/easypiechart.js"></script>
-	<script src="http://localhost:8000/js/gauge.js"></script>
-	<script src="http://localhost:8000/js/chart.js"></script>
-	<script src="http://localhost:8000/js/jquery.sparklines.js"></script>
-	<script src="http://localhost:8000/js/bootstrap.js"></script>
-	<script src="http://localhost:8000/js/controlfrog-plugins.js"></script>
+	<script src="{{asset ("assets/js/moment.js")}}"></script>
+	<script src="{{ asset ("assets/js/easypiechart.js")}}"></script>
+	<script src="{{ asset ("assets/js/gauge.js")}}"></script>
+	<script src="{{ asset ("assets/js/chart.js")}}"></script>
+	<script src="{{ asset ("assets/js/jquery.sparklines.js")}}"></script>
+	<script src="{{ asset ("assets/js/bootstrap.js")}}"></script>
+	<script src="{{ asset ("assets/js/controlfrog-plugins.js")}}"></script>
 
 
 	<script>
@@ -33,24 +33,24 @@
 	    })();
 	</script>
 
-	<script src="http://localhost:8000/js/jquery.jfeed.pack.js"></script>
+	<script src="{{ asset ("assets/js/jquery.jfeed.pack.js")}}"></script>
     
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 
-    <script src="js/calendar/calendar.js"></script>
+    <script src="{{ asset ("assets/js/calendar/calendar.js")}}"></script>
 
 	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
 
-	<script src="js/weather.js"></script>
+	<script src="{{ asset ("assets/js/weather.js")}}"></script>
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
     
     <script>
     	var themeColour = 'black';
     </script>
 
-	<script src="http://localhost:8000/js/controlfrog.js"></script>   
+	<script src="{{ asset ("assets/js/controlfrog.js")}}"></script>   
 	<script>		
 	var lol=0;
 
@@ -201,10 +201,10 @@
 						    <div class="climate_bg"></div>
 						    
 						    <div class="info_bg">
-						      <img class="dropicon" src="img/Droplet.svg">
+						      <img class="dropicon" src="{{ asset ("assets/img/Droplet.svg")}}">
 						      <p class="humidity"></p>
 
-						      <img class="windicon" src="img/Wind.svg">
+						      <img class="windicon" src="{{ asset ("assets/img/Wind.svg")}}">
 						      <div class="windspeed"></div>
 						    </div>
 						  

@@ -2,10 +2,10 @@ var clientId = '987202405297-lt0i4qhe9f1psbm4n5svpelv5rd31llq.apps.googleusercon
 var apiKey = 'AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q'; //choose public apiKey, any IP allowed (leave blank the allowed IP boxes in Google Dev Console)
 var userEmail = "madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com"; //your calendar Id
 var userTimeZone = "Kuala Lumpur"; //example "Rome" "Los_Angeles" ecc...
-var maxRows = 31; //events to shown
+var maxRows = 7; //events to shown
 var calName = "situation"; //name of calendar (write what you want, doesn't matter)
     
-var scopes = 'https://www.googleapis.com/auth/calendar';
+var scopes = ['https://www.googleapis.com/auth/calendar'];
     
 //--------------------- Add a 0 to numbers
 function padNum(num) {
@@ -42,13 +42,13 @@ function monthString(num) {
 
 //--------------------- from num to day of week
 function dayString(num){
-         if (num == "1") { return "mon" }
-    else if (num == "2") { return "tue" }
-    else if (num == "3") { return "wed" }
-    else if (num == "4") { return "thu" }
-    else if (num == "5") { return "fri" }
-    else if (num == "6") { return "sat" }
-    else if (num == "0") { return "sun" }
+         if (num == "1") { return "Monday" }
+    else if (num == "2") { return "Tuesday" }
+    else if (num == "3") { return "Wednesday" }
+    else if (num == "4") { return "Thusday" }
+    else if (num == "5") { return "Friday" }
+    else if (num == "6") { return "Saturday" }
+    else if (num == "0") { return "Sunday" }
 }
 //--------------------- end
 
@@ -100,11 +100,8 @@ function makeApiCall() {
                 var startDayWeek = dayString(startDateISO.getDay());
                 if( allDay == true){ //change this to match your needs
                     var str = [
-                    '<font size="4" face="courier">',
-                    /*startDayWeek, ' ',
-                    startMonth, ' ',
-                    startDay, ' ',
-                    startYear,*/ '</font><font size="5" face="courier"> ',  , '</font><br><br>'
+                    '<font size="5" face="courier"> ', item.summary , '</font><br>',
+                    '<small>',startDayWeek,' ', startMonth,' ', startDay,', ', startYear,' ','</small><hr>'
                     ];
                 }
                 else{
@@ -113,18 +110,18 @@ function makeApiCall() {
                     var startMin = time[1];
                     var str = [ //change this to match your needs
                         '<font size="4" face="courier">',
-                        // startDayWeek, ' ',
-                        //startMonth, ' ',
-                        //startDay, ' ',
-                        //startYear, ' - ',
-                        startHour, ':', startMin, '</font><font size="5" face="courier"> ', , '</font><br><br>'
+                        startDayWeek, ' ',
+                        startMonth, ' ',
+                        startDay, ' ',
+                        startYear, ' - ',
+                        startHour, ':', startMin, '</font><font size="5" face="courier"> ', item.summary , '</font><br><br>'
                         ];
                 }
                 li.innerHTML = str.join('');
                 li.setAttribute('class', classes.join(' '));
                 document.getElementById('events').appendChild(li);
             }
-        document.getElementById('updated').innerHTML = "updated " + today;
+        //document.getElementById('updated').innerHTML = "updated " + today;
         //document.getElementById('calendar').innerHTML = calName;
         });
     });
