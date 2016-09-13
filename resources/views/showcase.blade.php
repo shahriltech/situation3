@@ -181,7 +181,7 @@
 			<div class="col-sm-6 cf-item">
 				<div class="inner">
 					<header>
-					<p class="glyphicon glyphicon-cloud"> Weather</p>
+					<p class="glyphicon glyphicon-cloud"> eather</p>
 					</header>
 					<div class="content">
 						<div class="cf-td cf-td-12">
