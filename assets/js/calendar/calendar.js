@@ -76,15 +76,20 @@ function handleAuthResult(authResult) {
 //--------------------- API CALL itself
 function makeApiCall() {
     var today = new Date(); //today date
+    var addDate = new Date(today);
+
+    addDate.setDate(addDate.getDate() + 1); // add 2 days 
+     //console.log(addDate.toISOString());
     gapi.client.load('calendar', 'v3', function () {
         var request = gapi.client.calendar.events.list({
             'calendarId' : userEmail,
             'timeZone' : userTimeZone, 
             'singleEvents': true, 
-            'timeMin': today.toISOString(), //gathers only events not happened yet
+            'timeMax': addDate.toISOString(), //gathers only events not happened yet
             'maxResults': maxRows, 
             'orderBy': 'startTime'});
     request.execute(function (resp) {
+        if (resp.items.length > 0) {
             for (var i = 0; i < resp.items.length; i++) {
                 var li = document.createElement('p');
                 var item = resp.items[i];
@@ -101,7 +106,7 @@ function makeApiCall() {
                 if( allDay == true){ //change this to match your needs
                     var str = [
                     '<font size="5" face="courier"> ', item.summary , '</font><br>',
-                    '<small>',startDayWeek,' ', startMonth,' ', startDay,', ', startYear,' ','</small><hr>'
+                    '<font size="4">',startDayWeek,' ', startMonth,' ', startDay,', ', startYear,' ','</font><hr>'
                     ];
                 }
                 else{
@@ -121,9 +126,17 @@ function makeApiCall() {
                 li.setAttribute('class', classes.join(' '));
                 document.getElementById('events').appendChild(li);
             }
+        }
+        else{
+            var text = "<font size='5'>No Event</font>"
+            
+            document.getElementById('events').innerHTML = text;
+
+        }
+            
         //document.getElementById('updated').innerHTML = "updated " + today;
         //document.getElementById('calendar').innerHTML = calName;
         });
-    });
+        });
 }
 //--------------------- end

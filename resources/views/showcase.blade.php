@@ -181,7 +181,7 @@
 			<div class="col-sm-6 cf-item">
 				<div class="inner">
 					<header>
-					<p class="glyphicon glyphicon-cloud"> </p>
+					<p class="glyphicon glyphicon-cloud"> Weather</p>
 					</header>
 					<div class="content">
 						<div class="cf-td cf-td-12">
@@ -219,7 +219,7 @@
 				<div class="row">
 					<div class="col-sm-4 cf-item">
 						<header>
-							<p id="svpheader-1" class="glyphicon glyphicon-briefcase"> </p>
+							<p id="svpheader-1" class="glyphicon glyphicon-briefcase">None </p>
 						</header>
 						<div class="content cf-svp clearfix" id="svp-1">
 							<div class="chart" data-percent="0" data-layout="l-6-4"></div>
