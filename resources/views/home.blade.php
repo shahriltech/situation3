@@ -15,7 +15,7 @@
 
                 <div class="panel-body">
                     <div class="col-sm-6">
-                        <a href="/todos" role="button" class="btn btn-primary btn-block">To Do List</a>   
+                        <a href="{{ url('/todos') }}" role="button" class="btn btn-primary btn-block">To Do List</a>   
                     </div>
                     <div class="col-sm-6">
                         

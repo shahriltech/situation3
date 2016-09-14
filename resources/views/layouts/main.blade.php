@@ -6,8 +6,8 @@
         <title>Foundation | Welcome</title>
         <!--<link rel="stylesheet" href="{{ asset('css/foundation.css') }}" />-->
 
-        <link media="all" type="text/css" rel="stylesheet" href="http://localhost:8000/css/foundation.css">
-        <script src="http://localhost:8000/js/vendor/modernizr.js"></script>
+        <link media="all" type="text/css" rel="stylesheet" href="{{ asset ("assets/css/foundation.css")}}">
+        <script src="{{ asset ("assets/js/vendor/modernizr.js")}}"></script>
 
     </head>
 
@@ -52,9 +52,9 @@
         </div>
     </footer>
 
-    <script src="http://localhost:8000/js/vendor/jquery.js"></script>
-    <script src="http://localhost:8000/js/foundation.min.js"></script>
-    <script src="http://localhost:8000/js/app.js"></script>
+    <script src="{{ asset ("assets/js/vendor/jquery.js")}}"></script>
+    <script src="{{ asset ("assets/js/foundation.min.js")}}"></script>
+    <script src="{{ asset ("assets/js/app.js")}}"></script>
 
      
     <script>
