@@ -7,18 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ("assets/css/bootstrap.css") }}">
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ("assets/css/controlfrog.css")}}">  
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ('assets/css/bootstrap.css') }}">
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ('assets/css/controlfrog.css')}}">  
 	
 	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
 
-	<script src="{{asset ("assets/js/moment.js")}}"></script>
-	<script src="{{ asset ("assets/js/easypiechart.js")}}"></script>
-	<script src="{{ asset ("assets/js/gauge.js")}}"></script>
-	<script src="{{ asset ("assets/js/chart.js")}}"></script>
-	<script src="{{ asset ("assets/js/jquery.sparklines.js")}}"></script>
-	<script src="{{ asset ("assets/js/bootstrap.js")}}"></script>
-	<script src="{{ asset ("assets/js/controlfrog-plugins.js")}}"></script>
+	<script src="{{asset ('assets/js/moment.js')}}"></script>
+	<script src="{{ asset ('assets/js/easypiechart.js')}}"></script>
+	<script src="{{ asset ('assets/js/gauge.js')}}"></script>
+	<script src="{{ asset ('assets/js/chart.js')}}"></script>
+	<script src="{{ asset ('assets/js/jquery.sparklines.js')}}"></script>
+	<script src="{{ asset ('assets/js/bootstrap.js')}}"></script>
+	<script src="{{ asset ('assets/js/controlfrog-plugins.js')}}"></script>
 
 
 	<script>
@@ -33,24 +33,24 @@
 	    })();
 	</script>
 
-	<script src="{{ asset ("assets/js/jquery.jfeed.pack.js")}}"></script>
+	<script src="{{ asset ('assets/js/jquery.jfeed.pack.js')}}"></script>
     
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 
-    <script src="{{ asset ("assets/js/calendar/calendar.js")}}"></script>
+    <script src="{{ asset ('assets/js/calendar/calendar.js')}}"></script>
 
 	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
 
-	<script src="{{ asset ("assets/js/weather.js")}}"></script>
+	<script src="{{ asset ('assets/js/weather.js')}}"></script>
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
     
     <script>
     	var themeColour = 'black';
     </script>
 
-	<script src="{{ asset ("assets/js/controlfrog.js")}}"></script>   
+	<script src="{{ asset ('assets/js/controlfrog.js')}}"></script>   
 	<script>		
 	var lol=0;
 
@@ -169,34 +169,43 @@
                             </div>
                             <!-- <img src="../../img/weather.png" style="height:150px; witdh:150px;" />
                             <img src="../../img/thermometer-512.png" style="height:150px; witdh:150px;" /> -->
-                            <h3 class="location"></h3>
+                            <br /><br /><br /><br />
+                            <h2 class="location"></h2>
                             <table>
                                 <thead>
                                     <th>
-                                        <div class="climate_bg"></div>
-                                        <center><strong class="temperature"></strong></center>
+                                        <!-- <div style="height:200px;" class="climate_bg"></div> -->
+                                        <div style="height:150px;"><img style="height:120px;" src="{{ asset ('assets/img/weather_test.png') }}" /></div>
+                                        <center><strong style="font-size:30px;" class="temperature"></strong></center>
                                     </th>
                                     <th>
-                                        <img class="dropicon" src="{{ asset ("assets/img/Droplet.svg") }}">
-                                        <br />
-                                        <center><strong class="humidity"></strong></center>
+                                        <img style="height:150px;" class="dropicon" src="{{ asset ('assets/img/Droplet.svg') }}">
+                                        <center><strong style="font-size:30px;" class="humidity"></strong></center>
                                     </th>
-                                    <th>
-                                        <img class="windicon" src="{{ asset ("assets/img/Wind.svg") }}">
-                                        <center><div class="windspeed"></div></center>
-                                    </th>
+                                    <!-- <th>
+                                        <img style="height:150px;" class="windicon" src="{{ asset ('assets/img/Wind.svg') }}">
+                                        <center><div style="font-size:30px;" class="windspeed"></div></center>
+                                    </th> -->
                                 </thead>
                             </table>
                         </div>
-                    </div>
+                    </div><!-- //end cf-item -->
                     
-                    <div class="col-sm-4 cf-item" style="width:30%">
+                    <div class="col-sm-4 cf-item" style="width:40%">
 						<header>
 							<p class="glyphicon glyphicon-plane"> UBER CAR </p>
 						</header>
 						<div class="content">
                             <div id='content'>
-							    
+				                <font size="5" face="courier">UBER X</font>
+                                <p style="font-size:18px;">Estimated Time Arrive : <time>10</time> Minutes </p> 
+                                <hr />
+                                <font size="5" face="courier">UBER XL</font>
+                                <p style="font-size:18px;">Estimated Time Arrive : <time>10</time> Minutes </p> 
+                                <hr />
+                                <font size="5" face="courier">UBER BLACK</font>
+                                <p style="font-size:18px;">Estimated Time Arrive : <time>10</time> Minutes </p> 
+                                <hr />
 							</div>
 						</div>
 					</div> <!-- //end cf-item -->
@@ -204,153 +213,140 @@
 				</div> <!-- //end inner -->
                 
                 
-                    <div class="row">
-                        <!--1th Progress Section -->
-                        <div class="col-sm-3 cf-item">
-                            <header>
-                                <p id="svpheader-1" class="glyphicon glyphicon-briefcase">None </p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-1">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>		
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>											
-                            </div>
-                        </div> <!-- //end cf-item -->
+                <div class="row">
+                    <!--1th Progress Section -->
+                    <div class="col-sm-3 cf-item">
+                        <header>
+                            <p id="svpheader-1" class="glyphicon glyphicon-briefcase">None </p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-1">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>		
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>											
+                        </div>
+                    </div> <!-- //end cf-item -->
 
-                        <!-- 2th Progress Section -->
-                        <div class="col-sm-3 cf-item">
-                            <header>
-                                <p id="svpheader-2" class="glyphicon glyphicon-briefcase"> NONE</p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-2">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>		
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>											
-                            </div>
-                        </div> <!-- //end cf-item -->
+                    <!-- 2th Progress Section -->
+                    <div class="col-sm-3 cf-item">
+                        <header>
+                            <p id="svpheader-2" class="glyphicon glyphicon-briefcase"> NONE</p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-2">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>		
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>											
+                        </div>
+                    </div> <!-- //end cf-item -->
 
-                        <!-- 3th Progress Section -->
-                        <div class="col-sm-3 cf-item">
-                            <header>
-                                <p id="svpheader-3" class="glyphicon glyphicon-briefcase"> NONE</p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-3">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>	
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>					
-                            </div>
-                        </div> <!-- //end cf-item -->
+                    <!-- 3th Progress Section -->
+                    <div class="col-sm-3 cf-item">
+                        <header>
+                            <p id="svpheader-3" class="glyphicon glyphicon-briefcase"> NONE</p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-3">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>	
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>					
+                        </div>
+                    </div> <!-- //end cf-item -->
 
-                        <!-- 4th Progress Section -->
-                        <div class="col-sm-3 cf-item">
-                            <header>
-                                <p id="svpheader-4" class="glyphicon glyphicon-briefcase"> NONE</p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-4">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>													
-                            </div>						
-                        </div> <!-- //end cf-item -->
-                    </div> <!-- // end row -->
-                </div> <!-- //end col -->
+                    <!-- 4th Progress Section -->
+                    <div class="col-sm-3 cf-item">
+                        <header>
+                            <p id="svpheader-4" class="glyphicon glyphicon-briefcase"> NONE</p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-4">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>													
+                        </div>						
+                    </div> <!-- //end cf-item -->
+                </div> <!-- // end row -->
+            </div> <!-- //end col -->
 			
-			 <div class="col-sm-6 cf-item" style="width:50%">
-				<div class="inner">
-                    <div class="row">
-				    <div class="col-sm-4 cf-item" style="width:45%">
-						<header>
-							<p class="glyphicon glyphicon-plane"> PUBLIC HOLIDAY </p>
-						</header>
-						<div class="content">
-                            <div id='content'>
-							    <p id='events'></p>
-							</div>
+			<div class="col-sm-6 cf-item" style="width:50%">
+			<div class="inner">
+                   <div class="row">
+				   <div class="col-sm-4 cf-item" style="width:45%">
+					<header>
+						<p class="glyphicon glyphicon-plane"> PUBLIC HOLIDAY </p>
+					</header>
+					<div class="content">
+                           <div id='content'>
+							   <p id='events'></p>
 						</div>
-					</div> <!-- //end cf-item -->	
+					</div>
+				</div> <!-- //end cf-item -->	
 
-                    <!-- Annual Leave Section -->
-					<div class="col-sm-4 cf-item" style="width:45%">
-						<header>
-							<p class="glyphicon glyphicon-plane"> ANNUAL LEAVE </p>
-						</header>
-						<div class="content">
-						<br />
-							@foreach ($employee as $emp)
-									<font class="cf-td-day metric-small holiday"> {{ $emp->name }} </font><span class="pull-right cf-td-day metric-small holiday">{{ $emp->day }}</span>
-							<hr />
-						<!-- <div class="content">
-                            <br />
-                            <font class="cf-td-day metric-small holiday"> WORKER 1 </font><span class="pull-right cf-td-day metric-small holiday">2/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 2 </font><span class="pull-right cf-td-day metric-small holiday">2/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 3 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 4 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 5 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 6 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 7 </font><span class="pull-right cf-td-day metric-small holiday">12/9/2016</span>
-                            <hr />
-                            <font class="cf-td-day metric-small holiday"> WORKER 8 </font><span class="pull-right cf-td-day metric-small holiday">16/9/2016</span>
-                            <hr />
-						</div> -->
-
-				            @endforeach      
-						</div>
-					</div> <!-- //end cf-item -->
-					</div><!-- //end row -->
-				</div> <!-- //end inner -->
+                   <!-- Annual Leave Section -->
+				<div class="col-sm-4 cf-item" style="width:45%">
+					<header>
+						<p class="glyphicon glyphicon-plane"> ANNUAL LEAVE </p>
+					</header>
+					<div class="content">
+					    <font size="5" face="courier">Andrian</font>
+                        <p style="font-size:18px;">Thursday SEP 15, 2016</p>
+                        <hr />
+                        <font size="5" face="courier">Sharil Anuar</font>
+                        <p style="font-size:18px;">Thursday SEP 18, 2016</p>
+                        <hr />
+                        <font size="5" face="courier">Shahril Mokhtar</font>
+                        <p style="font-size:18px;">Thursday SEP 25, 2016</p>
+                        <hr />
+                        <font size="5" face="courier">Afiq Syahmi</font>
+                        <p style="font-size:18px;">Thursday SEP 30, 2016</p>
+                        <hr />
+					</div>
+				</div> <!-- //end cf-item -->
+				</div><!-- //end row -->
+			</div> <!-- //end inner -->
                 
                 
-				<div class="row">
-                    <div class="col-sm-2 cf-item"></div> <!-- //end cf-item -->
-					<div class="col-sm-4 cf-item">
-						<header>
-                            <p class="glyphicon glyphicon-bell" style="text-align:center;"> Ron Status </p>
-                        </header>
-						<div class="content" style="padding-top:50px; text-align:center;">
-							<div class="cf-svmc" id="counter1"> 
-								<div class="change metric">-</div>
-								<p class="timeupdate">Last update: loading</p>
-							</div>
+			<div class="row">
+                   <div class="col-sm-2 cf-item"></div> <!-- //end cf-item -->
+				<div class="col-sm-4 cf-item">
+					<header>
+                           <p class="glyphicon glyphicon-bell" style="text-align:center;"> Ron Status </p>
+                       </header>
+					<div class="content" style="padding-top:50px; text-align:center;">
+						<div class="cf-svmc" id="counter1"> 
+							<div class="change metric">-</div>
+							<p class="timeupdate">Last update: loading</p>
 						</div>
-				    </div> <!-- //end cf-item -->	
-					<div class="col-sm-4 cf-item">
-						<header>
-                            <p class="glyphicon glyphicon-bell" style="text-align:center;"> Tow Truck Status </p>
-                        </header>
-						<div class="content" style="padding-top:50px; text-align:center;">
-							<div class="cf-svmc" id="counter2"> 
-								<div class="change metric">-</div>
-								<p class="timeupdate">Last update: loading</p>
-							</div>
+					</div>
+				   </div> <!-- //end cf-item -->	
+				<div class="col-sm-4 cf-item">
+					<header>
+                           <p class="glyphicon glyphicon-bell" style="text-align:center;"> Tow Truck Status </p>
+                       </header>
+					<div class="content" style="padding-top:50px; text-align:center;">
+						<div class="cf-svmc" id="counter2"> 
+							<div class="change metric">-</div>
+							<p class="timeupdate">Last update: loading</p>
 						</div>
-				    </div> <!-- //end cf-item -->
-                    <div class="col-sm-2 cf-item"></div> <!-- //end cf-item -->
-				</div> <!-- // end row -->
+					</div>
+				   </div> <!-- //end cf-item -->
+                   <div class="col-sm-2 cf-item"></div> <!-- //end cf-item -->
+			</div> <!-- // end row -->
                 
-			</div> <!-- //end col -->
-		</div>
+		</div> <!-- //end col -->
+        </div>
         
 		<footer style="height:100%">
 			<br><br><br>		
