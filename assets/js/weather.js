@@ -7,7 +7,7 @@ if ("geolocation" in navigator) {
 }
 
 $(document).ready(function(){
-    setInterval(getWeather,10000);
+    setInterval(getWeather,1000*60*3);
 });
 
 function loadWeather(location, woeid){
