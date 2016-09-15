@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Seeder;
+
+class TodolistsTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        DB::table('todo_lists')->insert([
+        	'id' => 1,
+            'attend' => 'CMS To DO list',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'todo_list_featured' => 1,
+        ],
+
+        [
+        	'id' => 2,
+            'attend' => 'Game Java',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'todo_list_featured' => 1,
+        ],
+
+        [
+        	'id' => 3,
+            'attend' => '3rd Day Task',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'todo_list_featured' => 0,
+        ]);
+    }
+}

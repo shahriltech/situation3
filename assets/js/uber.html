@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery.getJSON demo</title>
+  <style>
+  img {
+    height: 100px;
+    float: left;
+  }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+ 
+ 
+<script>
+// (function() {
+//   var uberAPI = "https://api.uber.com/v1/estimates/time?";
+//   $.getJSON( uberAPI, {
+//     server_token: "yloHWIylZaDYof-29p3Saa_N_vk1ngdxsHfCcLG",
+//     start_latitude: 3.173015,
+//     start_longitude: 101.607116,
+//   })
+//     .done(function( result ) {
+//       $.each(result, function(i, field){
+//                 $("div").append(field + " ");
+//             });
+
+//     });
+// })();
+$(document).ready(function(){
+    $.get("https://api.uber.com/v1/estimates/time?server_token=6yloHWIylZaDYof-29p3Saa_N_vk1ngdxsHfCcLG&start_latitude=3.173015&start_longitude=101.607116", function(times){
+        alert("Data: " + times);
+    });
+});
+</script>
+
+
+
+<div>Test</div>
+
+</body>
+</html>
+
+
+
+
