@@ -38,9 +38,9 @@ class BigcounterController extends Controller
         $calc = Towtruck::where('id',$id)->pluck('location');
         $itemplus = true;
 
-        if ($countercount=="No")
+        if ($countercount[0]=="No")
             $itemplus = false;
-        else if ($countercount=="Yes")
+        else if ($countercount[0]=="Yes")
             $itemplus = true;
         
 
@@ -61,9 +61,9 @@ class BigcounterController extends Controller
         $calc = Ron::where('id',$id)->pluck('reason');
         $itemplus = true;
 
-        if ($countercount=="No")
+        if ($countercount[0]=="No")
             $itemplus = false;
-        else if ($countercount=="Yes")
+        else if ($countercount[0]=="Yes")
             $itemplus = true;
         
 
