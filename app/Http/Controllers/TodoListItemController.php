@@ -110,10 +110,7 @@ class TodoListItemController extends Controller
 		$list->todo_list_checked = $cnum;
 		$list->update();
 
-		if ($cnum==0)
-			return back()->with('Item was unchecked');			
-		else
-			return back()->with('Item was checked');		
+        return back()->with('Item was checked');		
 	}
 
 

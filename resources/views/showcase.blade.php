@@ -8,7 +8,8 @@
 
 
     <link media="all" type="text/css" rel="stylesheet" href="{{ asset ('assets/css/bootstrap.css') }}">
-    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ('assets/css/controlfrog.css')}}">  
+    <link media="all" type="text/css" rel="stylesheet" href="{{ asset ('assets/css/controlfrog.css')}}"> 
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 	
 	<script src="//code.jquery.com/jquery-1.9.1.min.js"></script> 
 
@@ -59,7 +60,7 @@
 
 				$.get( "{{URL::route('todos.getfeaturedlist')}}" )
 				  .done(function( data ) {
-				  	for (var i=0;i<4&&i<data.length;i++)
+				  	for (var i=0;i<9&&i<data.length;i++)
 				  	{
 				  		var path = "{{URL::action('BigcounterController@getlistsummary')}}"+"/"+data[i].id;
 				  		var j=i+1;
@@ -132,6 +133,32 @@
 	    	});				
 
 		});
+
+        
+        //Uber Script
+        $(document).ready(function(){
+        var server_token = "6yloHWIylZaDYof-29p3Saa_N_vk1ngdxsHfCcLG";
+        var start_latitude = 3.173015;
+        var start_longitude = 101.607116;
+
+        $.get("https://crossorigin.me/https://api.uber.com/v1/estimates/time?server_token="+server_token+"&start_latitude="+start_latitude+"&start_longitude="+start_longitude, function(data){
+          console.log(data.times.length);
+          for (i = 0; i < data.times.length; i++) { 
+          $('#result').append("<font size='5' face='courier'> "+data.times[i].display_name+" </font><br>");
+          $('#result').append("<p style='font-size:18px;'>Estimated Time <font class='pull-right'>"+secondsToHms(data.times[i].estimate)+" min<font> </p>");
+          $('#result').append("<hr>");
+        }
+            // alert("Data : " + data.estimate + "status : " + status);
+        })
+        });
+
+        function secondsToHms(d) {
+          d = Number(d);
+          var h = Math.floor(d / 3600);
+          var m = Math.floor(d % 3600 / 60);
+          var s = Math.floor(d % 3600 % 60);
+          return ((h > 0 ? h + ":" + (m < 10 ? "" : "") : "") + m); }
+
 	</script>
     
     <style>
@@ -143,6 +170,8 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
         
+/*        .change1,.change2 {display:none;}*/
+
     </style>	
     
 </head>
@@ -170,23 +199,33 @@
                             <!-- <img src="../../img/weather.png" style="height:150px; witdh:150px;" />
                             <img src="../../img/thermometer-512.png" style="height:150px; witdh:150px;" /> -->
                             <br /><br /><br /><br />
-                            <h2 class="location"></h2>
-                            <table>
+                            <h2><i>Weather for today</i></h2>
+                            <h3 class="location"><span id="location">Unknown</span></h3>
+                            <table style="width:300px;">
                                 <thead>
-                                    <th>
-                                        <!-- <div style="height:200px;" class="climate_bg"></div> -->
-                                        <div style="height:150px;"><img style="height:120px;" src="{{ asset ('assets/img/weather_test.png') }}" /></div>
-                                        <center><strong style="font-size:30px;" class="temperature"></strong></center>
+                                    <th style="width:150px;">
+                                        <!-- Cloud Icon -->
+								        <center><img id="icon" width="100px;" height="100px;" src="{{ asset ('assets/img/codes/200.png') }}"/></center>
                                     </th>
-                                    <th>
-                                        <img style="height:150px;" class="dropicon" src="{{ asset ('assets/img/Droplet.svg') }}">
-                                        <center><strong style="font-size:30px;" class="humidity"></strong></center>
+                                    <th style="width:150px;">
+                                        <!-- Humidity -->
+								        <center><img width="100px;" height="100px;" src="{{ asset ('assets/img/Droplet.svg') }}" height="16px" /></center>
                                     </th>
-                                    <!-- <th>
-                                        <img style="height:150px;" class="windicon" src="{{ asset ('assets/img/Wind.svg') }}">
-                                        <center><div style="font-size:30px;" class="windspeed"></div></center>
-                                    </th> -->
                                 </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><!-- Temperature -->
+								            <center><p class="temperature"><span id="temperature">0</span>&deg;</p></center>
+                                        </td>
+                                        <td>
+                                            <center>
+                                                <span id="humidity">0</span>%
+                                                <br />
+                                                <span id="wind"></span><span id="direction"></span>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div><!-- //end cf-item -->
@@ -197,86 +236,145 @@
 						</header>
 						<div class="content">
                             <div id='content'>
-				                <font size="5" face="courier">UBER X</font>
-                                <p style="font-size:18px;">Estimated Time Arrive : <time>10</time> Minutes </p> 
-                                <hr />
-                                <font size="5" face="courier">UBER XL</font>
-                                <p style="font-size:18px;">Estimated Time Arrive : <time>10</time> Minutes </p> 
-                                <hr />
-                                <font size="5" face="courier">UBER BLACK</font>
-                                <p style="font-size:18px;">Estimated Time Arrive : <time>10</time> Minutes </p> 
-                                <hr />
+				                <div id = "result"></div>
 							</div>
 						</div>
 					</div> <!-- //end cf-item -->
                     
 				</div> <!-- //end inner -->
-                
-                
+
                 <div class="row">
-                    <!--1th Progress Section -->
-                    <div class="col-sm-3 cf-item">
-                        <header>
-                            <p id="svpheader-1" class="glyphicon glyphicon-briefcase">None </p>
-                        </header>
-                        <div class="content cf-svp clearfix" id="svp-1">
-                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                            <div class="metrics">
-                                <span class="metric" style="font-size:40px;">0</span>
-                                <span class="metric-small" style="#">%</span>
-                            </div>		
-                            <br>
-                            <p class="timeupdate">Last update: loading</p>											
-                        </div>
-                    </div> <!-- //end cf-item -->
-
-                    <!-- 2th Progress Section -->
-                    <div class="col-sm-3 cf-item">
-                        <header>
-                            <p id="svpheader-2" class="glyphicon glyphicon-briefcase"> NONE</p>
-                        </header>
-                        <div class="content cf-svp clearfix" id="svp-2">
-                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                            <div class="metrics">
-                                <span class="metric" style="font-size:40px;">0</span>
-                                <span class="metric-small" style="#">%</span>
-                            </div>		
-                            <br>
-                            <p class="timeupdate">Last update: loading</p>											
-                        </div>
-                    </div> <!-- //end cf-item -->
-
-                    <!-- 3th Progress Section -->
-                    <div class="col-sm-3 cf-item">
-                        <header>
-                            <p id="svpheader-3" class="glyphicon glyphicon-briefcase"> NONE</p>
-                        </header>
-                        <div class="content cf-svp clearfix" id="svp-3">
-                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                            <div class="metrics">
-                                <span class="metric" style="font-size:40px;">0</span>
-                                <span class="metric-small" style="#">%</span>
-                            </div>	
-                            <br>
-                            <p class="timeupdate">Last update: loading</p>					
-                        </div>
-                    </div> <!-- //end cf-item -->
-
-                    <!-- 4th Progress Section -->
-                    <div class="col-sm-3 cf-item">
-                        <header>
-                            <p id="svpheader-4" class="glyphicon glyphicon-briefcase"> NONE</p>
-                        </header>
-                        <div class="content cf-svp clearfix" id="svp-4">
-                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                            <div class="metrics">
-                                <span class="metric" style="font-size:40px;">0</span>
-                                <span class="metric-small" style="#">%</span>
+                    <div class="col-md-12 change1">
+                        <!--1th Progress Section -->
+                        <div class="col-sm-3 cf-item change1">
+                            <header>
+                                <p id="svpheader-1" class="#">None </p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-1">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>		
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>											
                             </div>
-                            <br>
-                            <p class="timeupdate">Last update: loading</p>													
-                        </div>						
-                    </div> <!-- //end cf-item -->
+                        </div> <!-- //end cf-item -->
+
+                        <!-- 2th Progress Section -->
+                        <div class="col-sm-3 cf-item change1">
+                            <header>
+                                <p id="svpheader-2" class="glyphicon glyphicon-briefcase"> NONE</p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-2">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>		
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>											
+                            </div>
+                        </div> <!-- //end cf-item -->
+
+                        <!-- 3th Progress Section -->
+                        <div class="col-sm-3 cf-item change1">
+                            <header>
+                                <p id="svpheader-3" class="glyphicon glyphicon-briefcase"> NONE</p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-3">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>	
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>					
+                            </div>
+                        </div> <!-- //end cf-item -->
+
+                        <!-- 4th Progress Section -->
+                        <div class="col-sm-3 cf-item change1">
+                            <header>
+                                <p id="svpheader-4" class="glyphicon glyphicon-briefcase"> NONE</p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-4">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>													
+                            </div>						
+                        </div> <!-- //end cf-item --> 
+                    </div>
+
+                    <div class="col-md-12 change2">
+                        <!--1th Progress Section -->
+                        <div class="col-sm-3 change2">
+                            <header>
+                                <p id="svpheader-5" class="glyphicon glyphicon-briefcase">None </p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-5">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>		
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>											
+                            </div>
+                        </div> <!-- //end cf-item -->
+
+                        <!-- 2th Progress Section -->
+                        <div class="col-sm-3 change2">
+                            <header>
+                                <p id="svpheader-6" class="glyphicon glyphicon-briefcase"> NONE</p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-6">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>		
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>											
+                            </div>
+                        </div> <!-- //end cf-item -->
+
+                        <!-- 3th Progress Section -->
+                        <div class="col-sm-3 change2">
+                            <header>
+                                <p id="svpheader-7" class="glyphicon glyphicon-briefcase"> NONE</p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-7">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>	
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>					
+                            </div>
+                        </div> <!-- //end cf-item -->
+
+                        <!-- 4th Progress Section -->
+                        <div class="col-sm-3 change2">
+                            <header>
+                                <p id="svpheader-8" class="glyphicon glyphicon-briefcase"> NONE</p>
+                            </header>
+                            <div class="content cf-svp clearfix" id="svp-8">
+                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                                <div class="metrics">
+                                    <span class="metric" style="font-size:40px;">0</span>
+                                    <span class="metric-small" style="#">%</span>
+                                </div>
+                                <br>
+                                <p class="timeupdate">Last update: loading</p>													
+                            </div>						
+                        </div> <!-- //end cf-item -->
+                    </div>      
                 </div> <!-- // end row -->
             </div> <!-- //end col -->
 			
@@ -356,5 +454,49 @@
 	</div> <!-- //end container -->
 
 
+    <script>
+         
+//        var slideIndex = 0;
+//        carousel();
+//
+//        function carousel() {
+//            var i;
+//            var x = document.getElementsByClassName("mySlides");
+//            for (i = 0; i < x.length; i++) {
+//              x[i].style.display = "none";
+//            }
+//            slideIndex++;
+//            if (slideIndex > x.length) {slideIndex = 1}
+//            x[slideIndex-1].style.display = "block";
+//            setTimeout(carousel, 2000);
+//        }
+        
+        var slideIndex = 0;
+        carousel();
+       
+        function carousel() {
+            
+            
+            if(slideIndex == 0){
+                console.log("hide2");
+                $('.change2').css('display','none');
+                $('.change1').css('display','block');
+                slideIndex++;
+            }else if(slideIndex > 0){
+                console.log("hide1");
+                $('.change1').css('display','none');
+                $('.change2').css('display','block');
+                 slideIndex--;
+            }
+
+            
+            
+                setTimeout(carousel, 4000);
+            }
+    
+           
+        
+    </script>
+    
 </body>
 </html>
