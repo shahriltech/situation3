@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class TodoitemsTableSeeder extends Seeder
 {
@@ -16,8 +17,8 @@ class TodoitemsTableSeeder extends Seeder
             'todo_list_id' => 1,
             'content' => 'Task Introduction',
             'completed_on' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_checked' => 0,
         ],
 
@@ -26,8 +27,8 @@ class TodoitemsTableSeeder extends Seeder
             'todo_list_id' => 1,
             'content' => 'Task Phase 2',
             'completed_on' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_checked' => 1,
         ],
 
@@ -36,8 +37,8 @@ class TodoitemsTableSeeder extends Seeder
             'todo_list_id' => 2,
             'content' => 'Task Planning',
             'completed_on' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_checked' => 1,
         ],
 
@@ -46,8 +47,8 @@ class TodoitemsTableSeeder extends Seeder
             'todo_list_id' => 2,
             'content' => 'Task Execution',
             'completed_on' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_checked' => 1,
         ],
 
@@ -56,8 +57,8 @@ class TodoitemsTableSeeder extends Seeder
             'todo_list_id' => 1,
             'content' => 'Roundup',
             'completed_on' => '',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            // 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_checked' => 1,
         ]);
     }

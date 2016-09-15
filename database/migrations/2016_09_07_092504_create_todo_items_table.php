@@ -17,7 +17,7 @@ class CreateTodoItemsTable extends Migration
             $table->increments('id');
             $table->integer('todo_list_id');
             $table->string('content');
-            $table->dateTime('completed_on');
+            $table->string('completed_on');
             $table->timestamps();
             $table->integer('todo_list_checked');
         });

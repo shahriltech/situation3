@@ -42,8 +42,6 @@
 
     <script src="{{ asset ('assets/js/calendar/calendar.js')}}"></script>
 
-	<script src='https://apis.google.com/js/client.js?onload=handleClientLoad'></script>
-
 	<script src="{{ asset ('assets/js/weather.js')}}"></script>
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
     
@@ -386,8 +384,8 @@
 						<p class="glyphicon glyphicon-plane"> PUBLIC HOLIDAY </p>
 					</header>
 					<div class="content">
-                           <div id='content'>
-							   <p id='events'></p>
+                        <div id='content'>
+							<p id='public'></p>
 						</div>
 					</div>
 				</div> <!-- //end cf-item -->	
@@ -398,18 +396,9 @@
 						<p class="glyphicon glyphicon-plane"> ANNUAL LEAVE </p>
 					</header>
 					<div class="content">
-					    <font size="5" face="courier">Andrian</font>
-                        <p style="font-size:18px;">Thursday SEP 15, 2016</p>
-                        <hr />
-                        <font size="5" face="courier">Sharil Anuar</font>
-                        <p style="font-size:18px;">Thursday SEP 18, 2016</p>
-                        <hr />
-                        <font size="5" face="courier">Shahril Mokhtar</font>
-                        <p style="font-size:18px;">Thursday SEP 25, 2016</p>
-                        <hr />
-                        <font size="5" face="courier">Afiq Syahmi</font>
-                        <p style="font-size:18px;">Thursday SEP 30, 2016</p>
-                        <hr />
+					    <div id='content'>
+                            <p id='annual'></p>
+                        </div>
 					</div>
 				</div> <!-- //end cf-item -->
 				</div><!-- //end row -->

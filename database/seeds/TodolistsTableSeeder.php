@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use Carbon\Carbon;
 class TodolistsTableSeeder extends Seeder
 {
     /**
@@ -13,7 +13,7 @@ class TodolistsTableSeeder extends Seeder
     {
         DB::table('todo_lists')->insert([
         	'id' => 1,
-            'attend' => 'CMS To DO list',
+            'name' => 'CMS To DO list',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_featured' => 1,
@@ -21,7 +21,7 @@ class TodolistsTableSeeder extends Seeder
 
         [
         	'id' => 2,
-            'attend' => 'Game Java',
+            'name' => 'Game Java',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_featured' => 1,
@@ -29,7 +29,7 @@ class TodolistsTableSeeder extends Seeder
 
         [
         	'id' => 3,
-            'attend' => '3rd Day Task',
+            'name' => '3rd Day Task',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'todo_list_featured' => 0,

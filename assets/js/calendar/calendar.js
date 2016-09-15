@@ -1,12 +1,4 @@
-var clientId = '987202405297-lt0i4qhe9f1psbm4n5svpelv5rd31llq.apps.googleusercontent.com'; //choose web app client Id, redirect URI and Javascript origin set to http://localhost
-var apiKey = 'AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q'; //choose public apiKey, any IP allowed (leave blank the allowed IP boxes in Google Dev Console)
-var userEmail = "madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com"; //your calendar Id
-var userTimeZone = "Kuala Lumpur"; //example "Rome" "Los_Angeles" ecc...
-var maxRows = 7; //events to shown
-var calName = "situation"; //name of calendar (write what you want, doesn't matter)
-    
-var scopes = ['https://www.googleapis.com/auth/calendar'];
-    
+$(document).ready(function(){
 //--------------------- Add a 0 to numbers
 function padNum(num) {
     if (num <= 9) {
@@ -25,7 +17,7 @@ function AmPm(num) {
 
 //--------------------- num Month to String
 function monthString(num) {
-         if (num === "01") { return "JAN"; } 
+    if (num === "01") { return "JAN"; } 
     else if (num === "02") { return "FEB"; } 
     else if (num === "03") { return "MAR"; } 
     else if (num === "04") { return "APR"; } 
@@ -42,7 +34,7 @@ function monthString(num) {
 
 //--------------------- from num to day of week
 function dayString(num){
-         if (num == "1") { return "Monday" }
+    if (num == "1") { return "Monday" }
     else if (num == "2") { return "Tuesday" }
     else if (num == "3") { return "Wednesday" }
     else if (num == "4") { return "Thusday" }
@@ -51,48 +43,16 @@ function dayString(num){
     else if (num == "0") { return "Sunday" }
 }
 //--------------------- end
-
-//--------------------- client CALL
-function handleClientLoad() {
-    gapi.client.setApiKey(apiKey);
-    checkAuth();
-}
-//--------------------- end
-
-//--------------------- check Auth
-function checkAuth() {
-    gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
-}
-//--------------------- end
-
-//--------------------- handle result and make CALL
-function handleAuthResult(authResult) {
-    if (authResult) {
-        makeApiCall();
-    }
-}
-//--------------------- end
-
-//--------------------- API CALL itself
-function makeApiCall() {
+    var maxRows = 5;  
     var today = new Date(); //today date
     var addDate = new Date(today);
 
-    addDate.setDate(addDate.getDate() + 1); // add 2 days 
-     //console.log(addDate.toISOString());
-    gapi.client.load('calendar', 'v3', function () {
-        var request = gapi.client.calendar.events.list({
-            'calendarId' : userEmail,
-            'timeZone' : userTimeZone, 
-            'singleEvents': true, 
-            'timeMax': addDate.toISOString(), //gathers only events not happened yet
-            'maxResults': maxRows, 
-            'orderBy': 'startTime'});
-    request.execute(function (resp) {
-        if (resp.items.length > 0) {
-            for (var i = 0; i < resp.items.length; i++) {
-                var li = document.createElement('p');
-                var item = resp.items[i];
+    addDate.setDate(addDate.getDate() + 2); // add 2 days 
+
+    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_hdb005ir0dksqm4q3s5gr2co7k%40group.calendar.google.com/events?maxResults="+maxRows+"&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyD0XdEPbz2y_4mxYYMjxa539iXh1tf_tzg", function(data){
+        if (data.items.length > 0 ) {
+            for (i = 0; i < data.items.length; i++) {   
+                var item = data.items[i];
                 var classes = [];
                 var allDay = item.start.date? true : false;
                 var startDT = allDay ? item.start.date : item.start.dateTime;
@@ -103,40 +63,40 @@ function makeApiCall() {
                 var startDay = date[2];
                 var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
                 var startDayWeek = dayString(startDateISO.getDay());
+
                 if( allDay == true){ //change this to match your needs
-                    var str = [
-                    '<font size="5" face="courier"> ', item.summary , '</font><br>',
-                    '<font size="4">',startDayWeek,' ', startMonth,' ', startDay,', ', startYear,' ','</font><hr>'
-                    ];
+                    $('#annual').append("<font size='5' face='courier'> "+item.summary+" </font><br><font size='4'>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</font><hr><br>");
                 }
-                else{
-                    var time = dateTime[1].split(":"); //split hh ss etc...
-                    var startHour = AmPm(time[0]);
-                    var startMin = time[1];
-                    var str = [ //change this to match your needs
-                        '<font size="4" face="courier">',
-                        startDayWeek, ' ',
-                        startMonth, ' ',
-                        startDay, ' ',
-                        startYear, ' - ',
-                        startHour, ':', startMin, '</font><font size="5" face="courier"> ', item.summary , '</font><br><br>'
-                        ];
-                }
-                li.innerHTML = str.join('');
-                li.setAttribute('class', classes.join(' '));
-                document.getElementById('events').appendChild(li);
             }
         }
         else{
-            var text = "<font size='5'>No Event</font>"
-            
-            document.getElementById('events').innerHTML = text;
-
+            $('#annual').append("<font size='5' face='courier'>No Event</font>");
         }
-            
-        //document.getElementById('updated').innerHTML = "updated " + today;
-        //document.getElementById('calendar').innerHTML = calName;
-        });
-        });
-}
-//--------------------- end
+
+    });
+
+    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com/events?maxResults="+maxRows+"&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q", function(data){
+        if (data.items.length > 0 ) {
+            for (i = 0; i < data.items.length; i++) { 
+                var item = data.items[i];
+                var classes = [];
+                var allDay = item.start.date? true : false;
+                var startDT = allDay ? item.start.date : item.start.dateTime;
+                var dateTime = startDT.split("T"); //split date from time
+                var date = dateTime[0].split("-"); //split yyyy mm dd
+                var startYear = date[0];
+                var startMonth = monthString(date[1]);
+                var startDay = date[2];
+                var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
+                var startDayWeek = dayString(startDateISO.getDay());
+
+                if( allDay == true){ //change this to match your needs
+                    $('#public').append("<font size='5' face='courier'> "+item.summary+" </font><br><font size='4'>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</font><hr><br>");
+                }
+            }
+        }
+        else{
+            $('#public').append("<font size='5' face='courier'>No Event</font>");
+        }
+    });
+});
