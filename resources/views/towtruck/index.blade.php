@@ -31,7 +31,7 @@
   Last Updated: {{ $towtruck->updated_at }} <br><br>
 
 
-	<input type="submit" value="Submit" >
+	<button type="submit" class="btn btn-primary">Update post</button>
 </form>
 
 
