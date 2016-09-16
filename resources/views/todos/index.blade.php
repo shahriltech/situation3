@@ -27,7 +27,7 @@
 			</li>
 		</ul>
 	@endforeach
-	{{ link_to_route('todos.create',"Create New List",null,array("class"=>"success button")) }}
+	{{ link_to_route('todos.create',"Create New List",null,array("class"=>"success button")) }}	
 
 
 	@if (session('status'))
