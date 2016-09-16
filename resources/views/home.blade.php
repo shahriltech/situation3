@@ -27,9 +27,9 @@
                     <div class="col-sm-6">
                         <a href="bigboss" role="button" class="btn btn-warning btn-block">Boss</a>
                     </div>
-                    <div class="col-sm-6">
+                    <!--<div class="col-sm-6">
                         <a href="employee" role="button" class="btn btn-danger btn-block">Attendance</a>
-                    </div>
+                    </div>-->
                 </div>
                 <br><br>
 
