@@ -16,22 +16,10 @@ class AttendancesController extends Controller
 
 	public function index()
 	{
-		//
-
 		$list = Attendance::all();
 		return view('attendance.index',compact('list'));
 	}
 
-
-	// public function edit($id)
-	// {
-	// 	//
-	// 	$id = (int)$id;
-	// 	$attendance = Attendance::find($id);
-
-
-	// 	return view('attendance.edit',compact('attendance'));
-	// }
 
 	 public function edit(Attendance $attendance)
     {

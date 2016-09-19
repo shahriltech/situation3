@@ -19,7 +19,7 @@
     <nav class="top-bar" data-topbar>
         <ul class="title-area">
             <li class="name">
-                <h1><a href="/home"><< Back to Home</a></h1>
+                <h1><a href="/situation3/home"><< Back to Home</a></h1>
             </li>
         </ul>
     </nav>

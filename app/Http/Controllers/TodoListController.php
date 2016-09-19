@@ -37,15 +37,11 @@ class TodoListController extends Controller
 
 		$this->validate($request, [
             'name' => 'required',
-         ]);
-
+        ]);
 
 		$user = TodoList::create([
-
     		'name' => $request->name,
-
 		]);
-
 
 		return $this->index()->with('status', 'To Do List updated!');
 		//
@@ -112,7 +108,6 @@ class TodoListController extends Controller
          ]);
 
 		$todolist->update($request->all());     //call update function, and update all that user have request (all input)
-    	
     	return $this->index()->with('status', 'To Do List updated!');
 
 

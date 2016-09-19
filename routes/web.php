@@ -17,6 +17,11 @@
 
 Route::get('/home', 'HomeController@index');
 
+// Route::get('/home', [
+// 		'uses' => 'HomeController@index',
+// 		'as' => 'home',
+// 	]);
+
 Route::get('testfeed', array('as' => 'testfeed', function()
 {
 	header('Content-type: application/xml');
