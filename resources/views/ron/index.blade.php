@@ -10,10 +10,31 @@
       {{ method_field('PATCH')}}
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-      <div class="form-group">
-        <input type="text" name="attend" value="{{ $ron->attend }}">
-        <input type="text" name="reason" value="{{ $ron->reason }}">
 
+      <fieldset data-role="controlgroup">
+      <legend>Seen</legend>
+      
+      @if ($ron->attend === "Yes")
+        <input type="radio" name="attend" id="Yes" value="Yes" checked="checked">
+        <label for="Yes">Yes</label>
+
+        <input type="radio" name="attend" id="No" value="No">
+        <label for="No">No</label>
+
+      @else
+
+        <input type="radio" name="attend" id="Yes" value="Yes" >
+        <label for="Yes">Yes</label>
+
+        <input type="radio" name="attend" id="No" value="No" checked="checked">
+        <label for="No">No</label>
+
+      @endif
+      </fieldset>
+
+
+      <div class="form-group">
+        <input type="text" name="reason" value="{{ $ron->reason }}">
       </div>
 
       Last Updated: {{ $ron->updated_at }} <br><br>
