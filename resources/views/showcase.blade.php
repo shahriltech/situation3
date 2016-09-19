@@ -48,8 +48,8 @@
     <script>
     	var themeColour = 'black';
     </script>
-
-	<script src="{{ asset ('assets/js/controlfrog.js')}}"></script>   
+	<script src="{{ asset ('assets/js/controlfrog.js')}}"></script>  
+    
 	<script>		
 	var lol=0;
 
@@ -168,7 +168,7 @@
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         }
         
-/*        .change1,.change2 {display:none;}*/
+        /*.change1,.change2 {display:none;}*/
 
     </style>	
     
@@ -180,51 +180,77 @@
 
 		<div class="row">
 			<div class="col-sm-6 cf-item" style="width:50%">
-				<div class="inner">
+                <div class="inner">
                     
                     <div class="col-sm-4 cf-item" style="width:60%">
                         <header>
-                        <p class="glyphicon glyphicon-cloud"> Weather</p>
+                            <p class="glyphicon glyphicon-cloud"> Weather</p>
                         </header>
-                        <div class="content">
-                            <div class="cf-td cf-td-12">
-                                <div class="cf-td-time metric">12:00</div>
-                                <div class="cf-td-dd">
-                                    <p class="cf-td-day metric-small">Monday</p>
-                                    <p class="cf-td-date metric-small">1st October, 2013</p>
+                        
+                        <div class="content col-md-12"> 
+                            <div class="col-md-5">
+                                <div class="cf-td cf-td-12">
+                                    <div class="cf-td-time" style="font-size:50px; color:#FFFFFF;">12:00</div>
+                                    <div class="cf-td-dd">
+                                        <p class="cf-td-day metric-small">Monday</p>
+                                        <p class="cf-td-date metric-small">1st October, 2013</p>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-7">                       
+                                <h3 class="location"><span id="location">Unknown</span></h3>
+                                <table style="width:300px;">
+                                    <thead>
+                                        <th style="width:150px;">
+                                            <!-- Cloud Icon -->
+                                            <center><img id="icon" width="100px;" height="100px;" src="{{ asset ('assets/img/codes/200.png') }}"/></center>
+                                        </th>
+                                        <th style="width:150px;">
+                                            <!-- Humidity -->
+                                            <center><img width="100px;" height="100px;" src="{{ asset ('assets/img/Droplet.svg') }}" height="16px" /></center>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><!-- Temperature -->
+                                                <center><p class="temperature"><span id="temperature">0</span>&deg;</p></center>
+                                            </td>
+                                            <td>
+                                                <center>
+                                                    <span id="humidity">0</span>%
+                                                    <br />
+                                                    <span id="wind"></span><span id="direction"></span>
+                                                </center>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <!-- <img src="../../img/weather.png" style="height:150px; witdh:150px;" />
                             <img src="../../img/thermometer-512.png" style="height:150px; witdh:150px;" /> -->
-                            <br /><br /><br /><br />
-                            <h2><i>Weather for today</i></h2>
-                            <h3 class="location"><span id="location">Unknown</span></h3>
-                            <table style="width:300px;">
-                                <thead>
-                                    <th style="width:150px;">
-                                        <!-- Cloud Icon -->
-								        <center><img id="icon" width="100px;" height="100px;" src="{{ asset ('assets/img/codes/200.png') }}"/></center>
-                                    </th>
-                                    <th style="width:150px;">
-                                        <!-- Humidity -->
-								        <center><img width="100px;" height="100px;" src="{{ asset ('assets/img/Droplet.svg') }}" height="16px" /></center>
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><!-- Temperature -->
-								            <center><p class="temperature"><span id="temperature">0</span>&deg;</p></center>
-                                        </td>
-                                        <td>
-                                            <center>
-                                                <span id="humidity">0</span>%
-                                                <br />
-                                                <span id="wind"></span><span id="direction"></span>
-                                            </center>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                            <div class="col-sm-6 cf-item" >
+                                <header>
+                                       <p class="glyphicon glyphicon-bell" style="text-align:center;"> Ron Status </p>
+                                   </header>
+                                <div class="content" style="padding-top:50px; text-align:center;">
+                                    <div class="cf-svmc" id="counter1"> 
+                                        <div class="change metric" style="font-size:70px;">-</div>
+                                        <p class="timeupdate">Last update: loading</p>
+                                    </div>
+                                </div>
+                            </div>	
+                            <div class="col-sm-6 cf-item">
+                                <header>
+                                       <p class="glyphicon glyphicon-bell" style="text-align:center;"> Tow Truck Status </p>
+                                   </header>
+                                <div class="content" style="padding-top:50px; text-align:center;">
+                                    <div class="cf-svmc" id="counter2"> 
+                                        <div class="change metric" style="font-size:70px;">-</div>
+                                        <p class="timeupdate">Last update: loading</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div><!-- //end cf-item -->
                     
@@ -238,10 +264,10 @@
 							</div>
 						</div>
 					</div> <!-- //end cf-item -->
-                    
 				</div> <!-- //end inner -->
 
-                <div class="row">
+                
+                <div class="row" style="padding-top:60px;">
                     <div class="col-md-12 change1">
                         <!--1th Progress Section -->
                         <div class="col-sm-3 cf-item change1">
@@ -307,131 +333,105 @@
                             </div>						
                         </div> <!-- //end cf-item --> 
                     </div>
-
-                    <div class="col-md-12 change2">
-                        <!--1th Progress Section -->
-                        <div class="col-sm-3 change2">
-                            <header>
-                                <p id="svpheader-5" class="glyphicon glyphicon-briefcase">None </p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-5">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>		
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>											
-                            </div>
-                        </div> <!-- //end cf-item -->
-
-                        <!-- 2th Progress Section -->
-                        <div class="col-sm-3 change2">
-                            <header>
-                                <p id="svpheader-6" class="glyphicon glyphicon-briefcase"> NONE</p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-6">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>		
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>											
-                            </div>
-                        </div> <!-- //end cf-item -->
-
-                        <!-- 3th Progress Section -->
-                        <div class="col-sm-3 change2">
-                            <header>
-                                <p id="svpheader-7" class="glyphicon glyphicon-briefcase"> NONE</p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-7">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>	
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>					
-                            </div>
-                        </div> <!-- //end cf-item -->
-
-                        <!-- 4th Progress Section -->
-                        <div class="col-sm-3 change2">
-                            <header>
-                                <p id="svpheader-8" class="glyphicon glyphicon-briefcase"> NONE</p>
-                            </header>
-                            <div class="content cf-svp clearfix" id="svp-8">
-                                <div class="chart" data-percent="0" data-layout="l-6-4"></div>
-                                <div class="metrics">
-                                    <span class="metric" style="font-size:40px;">0</span>
-                                    <span class="metric-small" style="#">%</span>
-                                </div>
-                                <br>
-                                <p class="timeupdate">Last update: loading</p>													
-                            </div>						
-                        </div> <!-- //end cf-item -->
-                    </div>      
                 </div> <!-- // end row -->
             </div> <!-- //end col -->
 			
-			<div class="col-sm-6 cf-item" style="width:50%">
-			<div class="inner">
-                   <div class="row">
-				   <div class="col-sm-4 cf-item" style="width:45%">
-					<header>
-						<p class="glyphicon glyphicon-plane"> PUBLIC HOLIDAY </p>
-					</header>
-					<div class="content">
-                        <div id='content'>
-							<p id='public'></p>
-						</div>
-					</div>
-				</div> <!-- //end cf-item -->	
-
-                   <!-- Annual Leave Section -->
-				<div class="col-sm-4 cf-item" style="width:45%">
-					<header>
-						<p class="glyphicon glyphicon-plane"> ANNUAL LEAVE </p>
-					</header>
-					<div class="content">
-					    <div id='content'>
-                            <p id='annual'></p>
+			<div class="col-sm-6 cf-item" style="width:50%;">
+                <div class="inner">
+                       <div class="row">
+                       <div class="col-sm-4 cf-item" style="width:45%">
+                        <header>
+                            <p class="glyphicon glyphicon-plane"> PUBLIC HOLIDAY </p>
+                        </header>
+                        <div class="content">
+                            <div id='content'>
+                                <p id='public'></p>
+                            </div>
                         </div>
-					</div>
-				</div> <!-- //end cf-item -->
-				</div><!-- //end row -->
-			</div> <!-- //end inner -->
+                    </div> <!-- //end cf-item -->	
+
+                       <!-- Annual Leave Section -->
+                    <div class="col-sm-4 cf-item" style="width:45%">
+                        <header>
+                            <p class="glyphicon glyphicon-plane"> ANNUAL LEAVE </p>
+                        </header>
+                        <div class="content">
+                            <div id='content'>
+                                <p id='annual'></p>
+                            </div>
+                        </div>
+                    </div> <!-- //end cf-item -->
+                    </div><!-- //end row -->
+                </div> <!-- //end inner -->
                 
-                
-			<div class="row">
-                   <div class="col-sm-2 cf-item"></div> <!-- //end cf-item -->
-				<div class="col-sm-4 cf-item">
-					<header>
-                           <p class="glyphicon glyphicon-bell" style="text-align:center;"> Ron Status </p>
-                       </header>
-					<div class="content" style="padding-top:50px; text-align:center;">
-						<div class="cf-svmc" id="counter1"> 
-							<div class="change metric">-</div>
-							<p class="timeupdate">Last update: loading</p>
-						</div>
-					</div>
-				   </div> <!-- //end cf-item -->	
-				<div class="col-sm-4 cf-item">
-					<header>
-                           <p class="glyphicon glyphicon-bell" style="text-align:center;"> Tow Truck Status </p>
-                       </header>
-					<div class="content" style="padding-top:50px; text-align:center;">
-						<div class="cf-svmc" id="counter2"> 
-							<div class="change metric">-</div>
-							<p class="timeupdate">Last update: loading</p>
-						</div>
-					</div>
-				   </div> <!-- //end cf-item -->
-                   <div class="col-sm-2 cf-item"></div> <!-- //end cf-item -->
-			</div> <!-- // end row -->
-                
+              
+			<div class="row" style="padding-top:60px;">
+                <div class="col-md-12 change2">
+                    <!--1th Progress Section -->
+                    <div class="col-sm-3 cf-item change2">
+                        <header>
+                            <p id="svpheader-5" class="glyphicon glyphicon-briefcase">None </p>
+                            </header>
+                        <div class="content cf-svp clearfix" id="svp-5">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>		
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>											
+                        </div>
+                    </div> <!-- //end cf-item -->
+
+                    <!-- 2th Progress Section -->
+                    <div class="col-sm-3 cf-item change2">
+                        <header>
+                            <p id="svpheader-6" class="glyphicon glyphicon-briefcase"> NONE</p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-6">
+                            <div style="" class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>		
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>											
+                        </div>
+                    </div> <!-- //end cf-item -->
+
+                    <!-- 3th Progress Section -->
+                    <div class="col-sm-3 cf-item change2">
+                        <header>
+                            <p id="svpheader-7" class="glyphicon glyphicon-briefcase"> NONE</p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-7">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>	
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>					
+                        </div>
+                    </div> <!-- //end cf-item -->
+
+                    <!-- 4th Progress Section -->
+                    <div class="col-sm-3 cf-item change2">
+                        <header>
+                            <p id="svpheader-8" class="glyphicon glyphicon-briefcase"> NONE</p>
+                        </header>
+                        <div class="content cf-svp clearfix" id="svp-8">
+                            <div class="chart" data-percent="0" data-layout="l-6-4"></div>
+                            <div class="metrics">
+                                <span class="metric" style="font-size:40px;">0</span>
+                                <span class="metric-small" style="#">%</span>
+                            </div>
+                            <br>
+                            <p class="timeupdate">Last update: loading</p>													
+                        </div>						
+                    </div> <!-- //end cf-item -->
+                </div>      
+			</div> <!-- // end row -->  
 		</div> <!-- //end col -->
         </div>
         
@@ -460,31 +460,31 @@
 //            setTimeout(carousel, 2000);
 //        }
         
-        var slideIndex = 0;
-        carousel();
-       
-        function carousel() {
-            
-            
-            if(slideIndex == 0){
-                console.log("hide2");
-                $('.change2').css('display','none');
-                $('.change1').css('display','block');
-                slideIndex++;
-            }else if(slideIndex > 0){
-                console.log("hide1");
-                $('.change1').css('display','none');
-                $('.change2').css('display','block');
-                 slideIndex--;
-            }
-
-            
-            
-                setTimeout(carousel, 4000);
-            }
-    
-           
         
+        
+//        var slideIndex = 0;
+//        carousel();
+//       
+//        function carousel() {
+//            
+//            
+//            if(slideIndex == 0){
+//                console.log("hide2");
+//                $('.change2').css('display','none');
+//                $('.change1').css('display','block');
+//                slideIndex++;
+//            }else if(slideIndex > 0){
+//                console.log("hide1");
+//                $('.change1').css('display','none');
+//                $('.change2').css('display','block');
+//                 slideIndex--;
+//            }
+//
+//            
+//            
+//                setTimeout(carousel, 4000);
+//            }
+    
     </script>
     
 </body>
