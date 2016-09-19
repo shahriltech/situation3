@@ -55,7 +55,12 @@ function updateByZip(zip){
 }
 
 
-function sendRequest(url){
+function sendRequest(url) {
+    setInterval(myFunction(url), 60000*60*3);
+}
+
+
+function myFunction(url){
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {

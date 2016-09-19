@@ -18,15 +18,12 @@ class TowtrucksController extends Controller
         $this->middleware('auth');
     }
 
-
-
 	public function index()
 	{
 
 		$towtruck = DB::table('towtrucks')->where('id', 1)->first();
 		return view('towtruck.index', compact('towtruck'));
 	}
-
 
 	public function update(Request $request, Towtruck $towtruck)
 	{
@@ -36,7 +33,6 @@ class TowtrucksController extends Controller
         ]);
 
 		$towtruck->update($request->all());     //call update function, and update all that user have request (all input)
-    	
     	return back()->with('status', 'Attendance updated!');
 	}
 }

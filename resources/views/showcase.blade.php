@@ -40,7 +40,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 
-    <script src="{{ asset ('assets/js/calendar/calendar.js')}}"></script>
+    <!-- <script src="{{ asset ('assets/js/calendar/calendar.js')}}"></script> -->
 
 	<script src="{{ asset ('assets/js/weather.js')}}"></script>
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
@@ -132,32 +132,7 @@
 
 		});
 
-        
-        //Uber Script
-        $(document).ready(function(){
-        var server_token = "6yloHWIylZaDYof-29p3Saa_N_vk1ngdxsHfCcLG";
-        var start_latitude = 3.173015;
-        var start_longitude = 101.607116;
-
-        $.get("https://crossorigin.me/https://api.uber.com/v1/estimates/time?server_token="+server_token+"&start_latitude="+start_latitude+"&start_longitude="+start_longitude, function(data){
-          console.log(data.times.length);
-          for (i = 0; i < data.times.length; i++) { 
-          $('#result').append("<font size='5' face='courier'> "+data.times[i].display_name+" </font><br>");
-          $('#result').append("<p style='font-size:18px;'>Estimated Time <font class='pull-right'>"+secondsToHms(data.times[i].estimate)+" min<font> </p>");
-          $('#result').append("<hr>");
-        }
-            // alert("Data : " + data.estimate + "status : " + status);
-        })
-        });
-
-        function secondsToHms(d) {
-          d = Number(d);
-          var h = Math.floor(d / 3600);
-          var m = Math.floor(d % 3600 / 60);
-          var s = Math.floor(d % 3600 % 60);
-          return ((h > 0 ? h + ":" + (m < 10 ? "" : "") : "") + m); }
-
-	</script>
+        </script>
     
     <style>
         
@@ -460,6 +435,34 @@
 //            setTimeout(carousel, 2000);
 //        }
         
+<<<<<<< HEAD
+=======
+        var slideIndex = 0;
+        carousel();
+       
+        function carousel() {
+            
+            
+            if(slideIndex == 0){
+                console.log("hide2");
+                $('.change2').css('display','none');
+                $('.change1').css('display','block');
+                slideIndex++;
+            }else if(slideIndex > 0){
+                console.log("hide1");
+                $('.change1').css('display','none');
+                $('.change2').css('display','block');
+                 slideIndex--;
+            }
+
+            
+            
+                setTimeout(carousel, 4000);
+            }
+    
+           
+           
+>>>>>>> 90ebc1cdb28152bebc3868d126f81f6fe993f9e3
         
         
 //        var slideIndex = 0;
@@ -486,6 +489,51 @@
 //            }
     
     </script>
-    
+<script>
+      function pubholiday(){
+        $.ajax({
+          url: "{{ url('/publicholiday')}}",
+          cache: false,
+          success: function(data){
+             $("#public").html(data);
+          } 
+        });
+      }
+      function annual_leave(){
+        $.ajax({
+          url: "{{ url('/annualleave')}}",
+          cache: false,
+          success: function(data){
+             $("#annual").html(data);
+          } 
+        });
+      }
+    function uber_car(){
+        $.ajax({
+          url: "{{ url('/ubercar')}}",
+          cache: false,
+          success: function(data){
+             $("#result").html(data);
+          } 
+        });
+      }
+      $(document).ready(function(){
+        uber_car();
+        pubholiday();
+        annual_leave(); //Call auto_load() function when DOM is Ready
+ 
+      });
+ 
+      //Refresh auto_load() function after 10000 milliseconds
+      setInterval(function(){
+        uber_car();
+      },3000);
+
+      setInterval(function(){
+        pubholiday();
+        annual_leave();
+      },10000)
+   </script>
+
 </body>
 </html>

@@ -13,13 +13,25 @@
     <!--  radio button got problem, can't get input from db -->
       <fieldset data-role="controlgroup">
       <legend>Seen</legend>
-        
-        <input type="radio" name="seen" id="Yes" value="Yes" checked="{{ $towtruck->seen }}">
+      
+      @if ($towtruck->seen === "Yes")
+        <input type="radio" name="seen" id="Yes" value="Yes" checked="checked">
         <label for="Yes">Yes</label>
 
-        
-        <input type="radio" name="seen" id="No" value="No" checked="{{ $towtruck->seen }}">
+        <input type="radio" name="seen" id="No" value="No">
         <label for="No">No</label>
+
+      @else
+
+        <input type="radio" name="seen" id="Yes" value="Yes" >
+        <label for="Yes">Yes</label>
+
+        <input type="radio" name="seen" id="No" value="No" checked="checked">
+        <label for="No">No</label>
+
+      @endif
+
+
       </fieldset>
 
   

@@ -23,7 +23,6 @@ class TodoListItemController extends Controller
 		//
 	}
 
-
 	public function create()
 	{
 		$id = session('listID');
@@ -39,6 +38,21 @@ class TodoListItemController extends Controller
 	public function store(Request $request)
 	{
 		$id = session('listID');
+		$todo_id = (int)$id;
+
+		$this->validate($request, [
+            'content' => 'required',
+         ]);
+
+		$user = TodoItem::create([
+
+    		'content' => $request->content,
+    		'todo_list_id' => $todo_id,
+
+		]);
+
+		//redirect prob, create success
+		return $this->show($id)->with('status', 'Task list created!');
 
 		// $rules = array(
 		// 		"content" => array("required","unique:todo_items")
@@ -60,22 +74,7 @@ class TodoListItemController extends Controller
 		// $list->todo_list_id = $id;
 		// $list->save();
 
-		$todo_id = (int)$id;
-
-		$this->validate($request, [
-            'content' => 'required',
-         ]);
-
-
-		$user = TodoItem::create([
-
-    		'content' => $request->content,
-    		'todo_list_id' => $todo_id,
-
-		]);
-
-		//redirect prob, create success
-		return $this->show($id)->with('status', 'Task list created!');
+		
 	}
 
 

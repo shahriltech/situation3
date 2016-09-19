@@ -11,11 +11,20 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/ubercar', function () {
+    return view('ubercar');
+});
+
+Route::get('/publicholiday', function () {
+    return view('publicholiday');
+});
+Route::get('/annualleave', function () {
+    return view('annualleave');
+});
 
 Route::get('/home', 'HomeController@index');
+
+
 
 Route::get('testfeed', array('as' => 'testfeed', function()
 {

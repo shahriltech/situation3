@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
 $(document).ready(function(){
 //--------------------- Add a 0 to numbers
 function padNum(num) {
@@ -49,34 +55,6 @@ function dayString(num){
     var addDate = new Date(today);
     addDate.setDate(addDate.getDate() + 1); // add 2 days 
 
-    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_hdb005ir0dksqm4q3s5gr2co7k%40group.calendar.google.com/events?maxResults=7&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeMin="+today.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyD0XdEPbz2y_4mxYYMjxa539iXh1tf_tzg", function(data){
-
-        if (data.items.length > 0 ) {
-            for (i = 0; i < data.items.length; i++) {   
-                var item = data.items[i];
-                var classes = [];
-                var allDay = item.start.date? true : false;
-                var startDT = allDay ? item.start.date : item.start.dateTime;
-                var dateTime = startDT.split("T"); //split date from time
-                var date = dateTime[0].split("-"); //split yyyy mm dd
-                var startYear = date[0];
-                var startMonth = monthString(date[1]);
-                var startDay = date[2];
-
-                var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
-                var startDayWeek = dayString(startDateISO.getDay());
-
-                if( allDay == true){ //change this to match your needs
-                        $('#annual').append("<font size='5' face='courier'> "+item.summary+" </font><br><small>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</small><hr><br>");
-                    }
-            }
-        }
-        else{
-            $('#annual').append("<font size='5' face='courier'>No Event</font>");
-        }
-
-    });
-
     $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com/events?maxResults=7&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeMin="+today.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q", function(data){
         if (data.items.length > 0 ) {
 
@@ -103,3 +81,13 @@ function dayString(num){
         }
     });
 });
+</script>
+</head>
+<body style="background-color:grey">
+
+<div id = "public"></div>
+                            
+
+</body>
+</html>
+

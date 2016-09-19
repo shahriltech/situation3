@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
 $(document).ready(function(){
 //--------------------- Add a 0 to numbers
 function padNum(num) {
@@ -76,30 +82,14 @@ function dayString(num){
         }
 
     });
-
-    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com/events?maxResults=7&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeMin="+today.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q", function(data){
-        if (data.items.length > 0 ) {
-
-            for (i = 0; i < data.items.length; i++) { 
-                var item = data.items[i];
-                var classes = [];
-                var allDay = item.start.date? true : false;
-                var startDT = allDay ? item.start.date : item.start.dateTime;
-                var dateTime = startDT.split("T"); //split date from time
-                var date = dateTime[0].split("-"); //split yyyy mm dd
-                var startYear = date[0];
-                var startMonth = monthString(date[1]);
-                var startDay = date[2];
-                var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
-                var startDayWeek = dayString(startDateISO.getDay());
-
-                if( allDay == true){ //change this to match your needs
-                        $('#public').append("<font size='5' face='courier'> "+item.summary+" </font><br><small>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</small><hr><br>");
-                    }
-            }
-        }
-        else{
-            $('#public').append("<font size='5' face='courier'>No Event</font>");
-        }
-    });
 });
+</script>
+</head>
+<body style="background-color:grey">
+
+<div id = "annual"></div>
+                            
+
+</body>
+</html>
+
