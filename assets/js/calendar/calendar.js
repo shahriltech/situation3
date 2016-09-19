@@ -42,14 +42,15 @@ function dayString(num){
     else if (num == "6") { return "Saturday" }
     else if (num == "0") { return "Sunday" }
 }
+
 //--------------------- end
-    var maxRows = 5;  
+        
     var today = new Date(); //today date
     var addDate = new Date(today);
+    addDate.setDate(addDate.getDate() + 1); // add 2 days 
 
-    addDate.setDate(addDate.getDate() + 2); // add 2 days 
+    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_hdb005ir0dksqm4q3s5gr2co7k%40group.calendar.google.com/events?maxResults=7&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeMin="+today.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyD0XdEPbz2y_4mxYYMjxa539iXh1tf_tzg", function(data){
 
-    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_hdb005ir0dksqm4q3s5gr2co7k%40group.calendar.google.com/events?maxResults="+maxRows+"&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyD0XdEPbz2y_4mxYYMjxa539iXh1tf_tzg", function(data){
         if (data.items.length > 0 ) {
             for (i = 0; i < data.items.length; i++) {   
                 var item = data.items[i];
@@ -61,12 +62,13 @@ function dayString(num){
                 var startYear = date[0];
                 var startMonth = monthString(date[1]);
                 var startDay = date[2];
+
                 var startDateISO = new Date(startMonth + " " + startDay + ", " + startYear + " 00:00:00");
                 var startDayWeek = dayString(startDateISO.getDay());
 
                 if( allDay == true){ //change this to match your needs
-                    $('#annual').append("<font size='5' face='courier'> "+item.summary+" </font><br><font size='4'>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</font><hr><br>");
-                }
+                        $('#annual').append("<font size='5' face='courier'> "+item.summary+" </font><br><small>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</small><hr><br>");
+                    }
             }
         }
         else{
@@ -75,8 +77,9 @@ function dayString(num){
 
     });
 
-    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com/events?maxResults="+maxRows+"&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q", function(data){
+    $.get("https://www.googleapis.com/calendar/v3/calendars/madlabs.com.my_3gqt90cjc8fp2cunnmq622jo5g@group.calendar.google.com/events?maxResults=7&orderBy=startTime&singleEvents=true&timeMax="+addDate.toISOString()+"&timeMin="+today.toISOString()+"&timeZone=Kuala%20Lumpur&key=AIzaSyBHXdd3WsTCik5_3EJn83SI-BYe-Tcjb_Q", function(data){
         if (data.items.length > 0 ) {
+
             for (i = 0; i < data.items.length; i++) { 
                 var item = data.items[i];
                 var classes = [];
@@ -91,8 +94,8 @@ function dayString(num){
                 var startDayWeek = dayString(startDateISO.getDay());
 
                 if( allDay == true){ //change this to match your needs
-                    $('#public').append("<font size='5' face='courier'> "+item.summary+" </font><br><font size='4'>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</font><hr><br>");
-                }
+                        $('#public').append("<font size='5' face='courier'> "+item.summary+" </font><br><small>"+startDayWeek+', '+startMonth+' '+startDay+', '+startYear+"</small><hr><br>");
+                    }
             }
         }
         else{
